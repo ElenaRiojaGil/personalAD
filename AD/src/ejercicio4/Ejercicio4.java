@@ -1,11 +1,11 @@
 package ejercicio4;
 
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.util.Scanner;
 
 /**
@@ -78,12 +78,14 @@ public class Ejercicio4 {
 	}
 	
 
-	public boolean comparar(File file, String frase) {
+	public boolean comparar(File file, String linea) {
+		boolean noexiste=true;
 		try {
 		FileReader lector = new FileReader(file);
-		boolean finalfichero=false;
-		while(!finalfichero) {
-			int byteEntrada=lector.read();               
+		int byteEntrada=lector.read();
+		System.out.println((char)byteEntrada);
+		while() {
+			               
 			if (byteEntrada==-1){
 				finalfichero = true;                                      
 			}
@@ -93,6 +95,6 @@ public class Ejercicio4 {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return noexiste;
 	}
 }
