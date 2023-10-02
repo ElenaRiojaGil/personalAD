@@ -1,11 +1,10 @@
 package ejercicio4;
 
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.Scanner;
 
 /**
@@ -24,24 +23,27 @@ public class Ejercicio4 {
 
 		Ejercicio4 ej4 = new Ejercicio4();
 		File mifichero = new File("ejercicio4.txt");
-		if(!mifichero.exists()) {
+		if (!mifichero.exists()) {
 			ej4.escribirfichero(mifichero, "");
 		}
 
 		Scanner sc = new Scanner(System.in);
-		String linea = "";
+
 		System.out.println("que quieres escribir?");
+		String linea = sc.nextLine();
 		while (!linea.equals("fin")) {
 
-			linea = sc.nextLine();
-			if(!ej4.comparar(mifichero, linea)) {
+			if (!ej4.comparar(mifichero, linea)) {
 				ej4.escribirfichero(mifichero, linea);
-			}else {
+			} else {
+
 				System.out.println("La frase ya esta en el fichero");
 			}
-
+			linea = sc.nextLine();
 		}
+
 		ej4.leerfichero(mifichero);
+		sc.close();
 
 	}
 
@@ -60,15 +62,16 @@ public class Ejercicio4 {
 		}
 	}
 
-	public void escribirfichero(File file,String linea) {
+	public void escribirfichero(File file, String linea) {
 		try {
 			// mifichero.createNewFile();
-			FileWriter escritor = new FileWriter(file, false);
+			FileWriter escritor = new FileWriter(file, true);
 
 			/*
 			 * Scanner sc = new Scanner(System.in); String linea= sc.nextLine();
 			 */
-			escritor.write(linea);
+			escritor.write(linea + "\n");
+
 			escritor.close();
 			// ¿cómo hago para que no se sobreescribra? CAMBIAR FALSE POR TRUE
 
@@ -76,25 +79,39 @@ public class Ejercicio4 {
 			e.printStackTrace();
 		}
 	}
-	
 
 	public boolean comparar(File file, String linea) {
-		boolean noexiste=true;
+	FileReader lector;
 		try {
-		FileReader lector = new FileReader(file);
-		int byteEntrada=lector.read();
-		System.out.println((char)byteEntrada);
-		while() {
-			               
-			if (byteEntrada==-1){
-				finalfichero = true;                                      
+			lector = new FileReader(file);
+			String frase=leerLinea(lector);
+			while (frase != null) {
+				if(linea.equals(frase))return true;
+				
+				frase = leerLinea(lector);
 			}
 			
-			
-		}
-		}catch(IOException e) {
+
+			lector.close();
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return noexiste;
+		return false;
+
 	}
+
+	private String leerLinea(FileReader lector) throws IOException{
+		int byteEntrada = lector.read();
+		if (byteEntrada<0) return null;
+		String frase="";
+		while (byteEntrada != '\n') {
+			frase = frase + (char) byteEntrada;
+			byteEntrada = lector.read();
+		}
+		return null;
+	}
+
 }
