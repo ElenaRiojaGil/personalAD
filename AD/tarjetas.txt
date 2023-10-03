@@ -25,6 +25,6 @@ Teléfono: 621350120
 
 Nombre: Josefa
 Apellidos: Bueno Vallés
-Fecha de nacimiento: si/08/1974
+Fecha de nacimiento: La fecha introducida no es válida
 Teléfono: 976412141
 
