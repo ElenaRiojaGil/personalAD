@@ -4,6 +4,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * 
+ * @author Elena Rioja
+ *
+ */
 public class Ejercicio4 {
 
 	public static void main(String[] args) {
@@ -20,16 +25,16 @@ public class Ejercicio4 {
 					caracter = lector.read();
 				}
 				String[] datos = linea.split(",");
-				// System.out.println(estructura(datos) + "\n");
+
 				if (!fechaIncorrecta(datos[3])) {
 					datos[3] = "La fecha introducida no es válida";
 
 				}
-				System.out.println(datos[4].length());
+
 				if (telefonoCorrecto(datos[4])) {
 					tarjeta.write(estructura(datos) + "\n");
 				} else {
-					//System.out.println(datos[4]);
+
 					datos[4] = "El número de teléfono introducido no es válido";
 					tarjeta.write(estructura(datos) + "\n");
 				}
@@ -45,22 +50,26 @@ public class Ejercicio4 {
 
 	}
 
-	private static boolean telefonoCorrecto(String datos) {
-		if (datos.length() >= 9) {
+	public static boolean telefonoCorrecto(String datos) {
+
+		if (datos.lastIndexOf('\r') == 9 || datos.length() == 9) { // si el parametro dado tiene un retorno de
+																	// carro('\r') y se encuentra en la 9 posicion
+																	// quiere decir que tiene 9 numeros
+
 			if (datos.startsWith("976")) {
-				//System.out.println(datos);
+
 				return true;
-			}else if (datos.startsWith("6")) {
-				//System.out.println(datos);
+			} else if (datos.startsWith("6")) {
+
 				return true;
-			} 
-				//System.out.println(datos);
+			}
+
 		}
 		System.out.println(datos.length());
 		return false;
 	}
 
-	private static boolean fechaIncorrecta(String datos) {
+	public static boolean fechaIncorrecta(String datos) {
 		String[] datosFecha = datos.split("/");
 		if (datosFecha[0].length() == 2 && datosFecha[1].length() == 2 && datosFecha[2].length() == 4) {
 			try {
