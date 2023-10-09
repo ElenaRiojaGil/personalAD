@@ -16,7 +16,6 @@ public class Departamento {
 	private String nombre; // 25 caracteres
 	private String localidad; // 50 caracteres
 	
-	
 	public int getNumero() {
 		return numero;
 	}

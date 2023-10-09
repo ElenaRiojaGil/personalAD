@@ -64,7 +64,7 @@ public class Ejercicio18leer {
 			}
 		}
 
-		// leer un departamento
+		// leer un departamento 
 
 		try {
 			fichero.close();

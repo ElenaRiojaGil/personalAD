@@ -33,7 +33,7 @@ public class Ejercicio18 {
 		listaDepartamentos.add(d3);
 		Departamento d4 = new Departamento(213, "Física", "Teruel");
 		listaDepartamentos.add(d4);
-
+ 
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
