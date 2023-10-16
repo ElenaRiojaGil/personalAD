@@ -79,7 +79,7 @@ public class Ejercicio18leer {
 		// TODO Auto-generated method stub
 		char []tmp = new char[tamagno];
 		for (int i = 0; i < tamagno; i++) {
-			tmp[i] = fichero.readChar();
+			tmp[i] = fichero.readChar(); 
 		} 
 		return new String(tmp);
 	}
