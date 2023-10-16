@@ -34,6 +34,9 @@ public class Departamento {
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
+	public String toString() {
+		return "Departamento [numero=" + numero + ", nombre=" + nombre + ", localidad=" + localidad + "]";
+	}
 	
 
 }

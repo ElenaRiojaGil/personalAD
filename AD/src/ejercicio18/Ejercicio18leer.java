@@ -20,7 +20,8 @@ import java.util.ArrayList;
  */
 
 public class Ejercicio18leer {
-
+	private static int tamagnoNombre = 25;
+	private static int tamagnoLocalidad = 50;
 	private static int tamagnoReistro = 154; // int + 25 char + 50 char = 4 + 50 + 100 = 154
 
 	public static void main(String[] args) {
@@ -38,7 +39,7 @@ public class Ejercicio18leer {
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
-			fichero = new RandomAccessFile("src\\ejercicio18\\departamentos.dat", "rw");
+			fichero = new RandomAccessFile("src\\ejercicio18\\departamentos.dat", "r");
 		} catch (FileNotFoundException e) {
 			System.err.println("No existe el fichero");
 			// TODO Auto-generated catch block
@@ -48,23 +49,22 @@ public class Ejercicio18leer {
 		// escribir un departamento
 
 		// int posicion = 1;
+		Departamento d = new Departamento();
 
-		for (Departamento d : listaDepartamentos) {
-			try {
-				// colocar el cursor donde voy a empeza a escribir
-				fichero.seek(funcion(d.getNumero()));
+		try {
+			// colocar el cursor donde voy a empeza a escribir
+			fichero.seek(funcion(213));
 
-				fichero.writeInt(d.getNumero()); // escribo el numero de departamento
-				fichero.writeChars(d.getNombre()); // escribo el nombre del departamento
-				fichero.writeChars(d.getLocalidad()); // escribo la localidad
+			d.setNumero(fichero.readInt()); // escribo el numero de departamento
+			d.setNombre(obtenerString(fichero,tamagnoNombre)); // escribo el nombre del departamento
+			d.setLocalidad(obtenerString(fichero,tamagnoLocalidad)); // escribo la localidad
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		// leer un departamento 
+		System.out.println(d);
+		// leer un departamento
 
 		try {
 			fichero.close();
@@ -74,6 +74,16 @@ public class Ejercicio18leer {
 		}
 
 	}
+
+	private static String obtenerString(RandomAccessFile fichero, int tamagno) throws IOException {
+		// TODO Auto-generated method stub
+		char []tmp = new char[tamagno];
+		for (int i = 0; i < tamagno; i++) {
+			tmp[i] = fichero.readChar();
+		}
+		return new String(tmp);
+	}
+
 
 	/**
 	 * Calcular la posicion dentro del fichero en la que debe estar el cursor para
@@ -88,5 +98,7 @@ public class Ejercicio18leer {
 		pos = tamagnoReistro * (numero - 1) + 1;
 		return pos;
 	}
+
+
 
 }
