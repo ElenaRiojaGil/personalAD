@@ -80,7 +80,7 @@ public class Ejercicio18leer {
 		char []tmp = new char[tamagno];
 		for (int i = 0; i < tamagno; i++) {
 			tmp[i] = fichero.readChar();
-		}
+		} 
 		return new String(tmp);
 	}
 
