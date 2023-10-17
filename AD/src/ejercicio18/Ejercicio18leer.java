@@ -3,7 +3,7 @@ package ejercicio18;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
+
 
 /**
  * Realiza un programa Java que cree un fichero binario para guardar datos de
@@ -25,17 +25,8 @@ public class Ejercicio18leer {
 	private static int tamagnoReistro = 154; // int + 25 char + 50 char = 4 + 50 + 100 = 154
 
 	public static void main(String[] args) {
-		ArrayList<Departamento> listaDepartamentos = new ArrayList<>();
-
-		Departamento d1 = new Departamento(101, "Mátematicas", "Zaragoza");
-		listaDepartamentos.add(d1);
-		Departamento d2 = new Departamento(98, "Física", "Zaragoza");
-		listaDepartamentos.add(d2);
-		Departamento d3 = new Departamento(2, "Ingles", "Huesca");
-		listaDepartamentos.add(d3);
-		Departamento d4 = new Departamento(213, "Física", "Teruel");
-		listaDepartamentos.add(d4);
-
+		
+		Ejercicio18leer ej= new Ejercicio18leer();
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
@@ -53,11 +44,11 @@ public class Ejercicio18leer {
 
 		try {
 			// colocar el cursor donde voy a empeza a escribir
-			fichero.seek(funcion(213));
+			fichero.seek(ej.funcion(2));
 
-			d.setNumero(fichero.readInt()); // escribo el numero de departamento
-			d.setNombre(obtenerString(fichero,tamagnoNombre)); // escribo el nombre del departamento
-			d.setLocalidad(obtenerString(fichero,tamagnoLocalidad)); // escribo la localidad
+			d.setNumero(fichero.readInt()); // leo el numero de departamento
+			d.setNombre(ej.obtenerString(fichero,tamagnoNombre)); // leo el nombre del departamento
+			d.setLocalidad(ej.obtenerString(fichero,tamagnoLocalidad)); // leo la localidad
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +66,7 @@ public class Ejercicio18leer {
 
 	}
 
-	private static String obtenerString(RandomAccessFile fichero, int tamagno) throws IOException {
+	private String obtenerString(RandomAccessFile fichero, int tamagno) throws IOException {
 		// TODO Auto-generated method stub
 		char []tmp = new char[tamagno];
 		for (int i = 0; i < tamagno; i++) {
@@ -93,7 +84,7 @@ public class Ejercicio18leer {
 	 * @return la posicion dentro del fichero en la que debe estar el cursor para
 	 *         leer el registro "numero"
 	 */
-	private static int funcion(int numero) {
+	private int funcion(int numero) {
 		int pos = 0;
 		pos = tamagnoReistro * (numero - 1) + 1;
 		return pos;
