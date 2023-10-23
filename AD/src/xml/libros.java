@@ -12,8 +12,7 @@ public class libros {
 		try {
 
 			DocumentBuilder builder = factoria.newDocumentBuilder();
-			Document document = builder
-					.parse(new File("D:\\Documentos\\ElenaRioja\\AD\\WORKSPACE\\AD\\src\\xml\\libros.xml"));
+			Document document = builder.parse(new File("src\\xml\\libros.xml"));
 			document.getDocumentElement().normalize();
 			System.out.println("Elemento raiz :" + document.getDocumentElement().getNodeName());
 

@@ -117,22 +117,24 @@ public class GestionDepartamentos {
 		Departamento registro = null;
 
 		if (fichero != null) {
+			
 			try {
 				registro = new Departamento();
 
 				// TENGO QUE IR LEYENDO EN ORDEN LO QUE HE ESCRITO ANTES
-				// leo el NOMBRE
+				// leo el ID
 				registro.setNumero(fichero.readInt());
 				
 				char campoN[] = new char[tamagnoNombre];
 				for (int i = 0; i < tamagnoNombre; i++) {
 					campoN[i] = fichero.readChar();
 				}
+				//leo el NOMBRE
 				registro.setNombre(new String(campoN));
 
 				
 
-				// leo el EMAIL
+				// leo la LOCALIDAD
 				char campoE[] = new char[tamagnoLocalidad];
 				for (int i = 0; i < tamagnoLocalidad; i++) {
 					campoE[i] = fichero.readChar();
@@ -147,5 +149,13 @@ public class GestionDepartamentos {
 
 		return registro;
 	}
+	
+	public long finFichero() throws IOException {
+		
+	
+		return fichero.getFilePointer();
+		
+	}
+	
 
 }
