@@ -41,7 +41,7 @@ public class Ejercicio18 {
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
-			fichero = new RandomAccessFile("src\\ejercicio18\\departamentos.dat", "rw");
+			fichero = new RandomAccessFile("departamentos.dat", "rw");
 		} catch (FileNotFoundException e) {
 			System.err.println("No existe el fichero");
 			// TODO Auto-generated catch block

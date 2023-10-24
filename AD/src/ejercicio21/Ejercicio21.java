@@ -1,7 +1,5 @@
 package ejercicio21;
 
-import java.io.File;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Result;
@@ -16,6 +14,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
+import ejercicio18.Departamento;
 import ejercicio19.GestionDepartamentos;
 
 /**
@@ -43,36 +42,44 @@ public class Ejercicio21 {
 			document.setXmlVersion("1.0");
 			Element elementoEmpleado = document.createElement("dep");
 			document.getDocumentElement().appendChild(elementoEmpleado);
-			while (departamentos.finFichero() != 0) {
-				
+			departamentos.iniciar();
+			while (!departamentos.finFichero()) {
 
-				if (departamentos.leer() != null) { 
+				Departamento d = new Departamento();
+				d = departamentos.leer();
+				//System.out.println(d);
+				if (d != null) {
+					
+					if (d.getNumero()>0) {
 
-					int id = departamentos.funcion(0);
+						System.out.println(d);
 
-					elementoEmpleado.setAttribute("id", Integer.toString(id));
+						elementoEmpleado.setAttribute("id", Integer.toString(d.getNumero()));
 
-					String nombre = departamentos.leer(id).getNombre();
-					Element elemNom = document.createElement("nombre");
-					Text textoNom = document.createTextNode(nombre);
-					elementoEmpleado.appendChild(elemNom);
-					elemNom.appendChild(textoNom);
+						String nombre = d.getNombre();
+						Element elemNom = document.createElement("nombre");
+						Text textoNom = document.createTextNode(nombre);
+						elementoEmpleado.appendChild(elemNom);
+						elemNom.appendChild(textoNom);
 
-					String localidad = departamentos.leer(id).getLocalidad();
-					Element elemLoc = document.createElement("localidad");
-					Text textoLoc = document.createTextNode(localidad);
-					elementoEmpleado.appendChild(elemLoc);
-					elemNom.appendChild(textoLoc);
+						String localidad = d.getLocalidad();
+						Element elemLoc = document.createElement("localidad");
+						Text textoLoc = document.createTextNode(localidad);
+						elementoEmpleado.appendChild(elemLoc);
+						elemNom.appendChild(textoLoc);
+					}
 
-				} else
-					departamentos.finFichero();
+				}
+
 			}
 			TransformerFactory xformFactory = TransformerFactory.newInstance();
 			Transformer idTransform = xformFactory.newTransformer();
 			Source input = new DOMSource(document);
 			Result output = new StreamResult(System.out);
-			idTransform.transform(input, output);
-		} catch (Exception e) {
+			//idTransform.transform(input, output);
+		} catch (
+
+		Exception e) {
 			e.printStackTrace();
 		}
 	}

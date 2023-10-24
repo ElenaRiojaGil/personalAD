@@ -24,7 +24,7 @@ public class Ejercicio19 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		GestionDepartamentos departamentos=new GestionDepartamentos("src\\ejercicio18\\departamentos.dat");
+		GestionDepartamentos departamentos=new GestionDepartamentos("departamentos.dat");
 		// defino el fichero donde voy a escribir
 		//RandomAccessFile fichero = null;
 		try {
