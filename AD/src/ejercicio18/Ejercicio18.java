@@ -27,13 +27,13 @@ public class Ejercicio18 {
 	public static void main(String[] args) {
 		ArrayList<Departamento> listaDepartamentos = new ArrayList<>();
 
-		Departamento d1 = new Departamento(101, "Mátematicas", "Zaragoza");
+		Departamento d1 = new Departamento(101, "Matematicas", "Zaragoza");
 		listaDepartamentos.add(d1);
-		Departamento d2 = new Departamento(98, "Física", "Zaragoza");
+		Departamento d2 = new Departamento(98, "Fisica", "Zaragoza");
 		listaDepartamentos.add(d2);
 		Departamento d3 = new Departamento(2, "Ingles", "Huesca");
 		listaDepartamentos.add(d3);
-		Departamento d4 = new Departamento(213, "Física", "Teruel");
+		Departamento d4 = new Departamento(213, "Fisica", "Teruel");
 		listaDepartamentos.add(d4);
 		
 		Ejercicio18 ej= new Ejercicio18();
@@ -41,7 +41,7 @@ public class Ejercicio18 {
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
-			fichero = new RandomAccessFile("departamentos.dat", "rw");
+			fichero = new RandomAccessFile("src\\departamentos.dat", "rw");
 		} catch (FileNotFoundException e) {
 			System.err.println("No existe el fichero");
 			// TODO Auto-generated catch block

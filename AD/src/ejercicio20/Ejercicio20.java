@@ -32,16 +32,15 @@ public class Ejercicio20 {
 			e.printStackTrace();
 		}
 		int num;
-		
+
 		Scanner teclado = new Scanner(System.in);
 
 		System.out.println("Introduzca el número del departamento a modificar: ");
 		num = teclado.nextInt();
 		teclado.nextLine();
-		
-		
+
 		Departamento d = new Departamento();
-		
+
 		departamentos.eliminar(d, num);
 
 		System.out.println(d);

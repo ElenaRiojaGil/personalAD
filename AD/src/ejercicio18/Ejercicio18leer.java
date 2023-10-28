@@ -30,7 +30,7 @@ public class Ejercicio18leer {
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
-			fichero = new RandomAccessFile("departamentos.dat", "r");
+			fichero = new RandomAccessFile("src\\departamentos.dat", "r");
 		} catch (FileNotFoundException e) {
 			System.err.println("No existe el fichero");
 			// TODO Auto-generated catch block
@@ -45,6 +45,7 @@ public class Ejercicio18leer {
 		try {
 			// colocar el cursor donde voy a empeza a escribir
 			fichero.seek(ej.funcion(2));
+			System.out.println(fichero.getFilePointer());
 
 			d.setNumero(fichero.readInt()); // leo el numero de departamento
 			d.setNombre(ej.obtenerString(fichero,tamagnoNombre)); // leo el nombre del departamento
