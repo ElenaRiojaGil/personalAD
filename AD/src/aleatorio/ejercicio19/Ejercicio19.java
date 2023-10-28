@@ -1,11 +1,11 @@
-package ejercicio19;
+package aleatorio.ejercicio19;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.Scanner;
 
-import ejercicio18.Departamento;
+import aleatorio.ejercicio18.Departamento;
 
 /**
  * A partir de fichero binario “departamentos.dat” creado en el ejercicio 18,

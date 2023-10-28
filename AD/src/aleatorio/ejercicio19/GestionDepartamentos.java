@@ -1,10 +1,10 @@
-package ejercicio19;
+package aleatorio.ejercicio19;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import ejercicio18.Departamento;
+import aleatorio.ejercicio18.Departamento;
 
 public class GestionDepartamentos {
 	private static int tamagnoNombre = 25;

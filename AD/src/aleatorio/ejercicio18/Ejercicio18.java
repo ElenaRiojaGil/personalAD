@@ -1,9 +1,9 @@
-package ejercicio18;
+package aleatorio.ejercicio18;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-
+import java.util.ArrayList;
 
 /**
  * Realiza un programa Java que cree un fichero binario para guardar datos de
@@ -19,18 +19,29 @@ import java.io.RandomAccessFile;
  *
  */
 
-public class Ejercicio18leer {
+public class Ejercicio18 {
 	private static int tamagnoNombre = 25;
 	private static int tamagnoLocalidad = 50;
 	private static int tamagnoReistro = 154; // int + 25 char + 50 char = 4 + 50 + 100 = 154
 
 	public static void main(String[] args) {
+		ArrayList<Departamento> listaDepartamentos = new ArrayList<>();
+
+		Departamento d1 = new Departamento(101, "Matematicas", "Zaragoza");
+		listaDepartamentos.add(d1);
+		Departamento d2 = new Departamento(98, "Fisica", "Zaragoza");
+		listaDepartamentos.add(d2);
+		Departamento d3 = new Departamento(2, "Ingles", "Huesca");
+		listaDepartamentos.add(d3);
+		Departamento d4 = new Departamento(213, "Fisica", "Teruel");
+		listaDepartamentos.add(d4);
 		
-		Ejercicio18leer ej= new Ejercicio18leer();
+		Ejercicio18 ej= new Ejercicio18();
+		
 		// defino el fichero donde voy a escribir
 		RandomAccessFile fichero = null;
 		try {
-			fichero = new RandomAccessFile("departamentos.dat", "r");
+			fichero = new RandomAccessFile("departamentos.dat", "rw");
 		} catch (FileNotFoundException e) {
 			System.err.println("No existe el fichero");
 			// TODO Auto-generated catch block
@@ -40,23 +51,23 @@ public class Ejercicio18leer {
 		// escribir un departamento
 
 		// int posicion = 1;
-		Departamento d = new Departamento();
+		
 
 		try {
+			for(Departamento d:listaDepartamentos) {
 			// colocar el cursor donde voy a empeza a escribir
-			fichero.seek(ej.funcion(2));
-			System.out.println(fichero.getFilePointer());
+			fichero.seek(ej.funcion(d.getNumero()));
 
-			d.setNumero(fichero.readInt()); // leo el numero de departamento
-			d.setNombre(ej.obtenerString(fichero,tamagnoNombre)); // leo el nombre del departamento
-			d.setLocalidad(ej.obtenerString(fichero,tamagnoLocalidad)); // leo la localidad
-
+			fichero.writeInt(d.getNumero()); // escribo el numero de departamento
+			fichero.writeChars(ej.formateaCadena(d.getNombre(), tamagnoNombre)); // escribo el nombre del departamento
+			fichero.writeChars(ej.formateaCadena(d.getLocalidad(), tamagnoLocalidad)); // escribo la localidad
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(d);
-		// leer un departamento
+
+		
 
 		try {
 			fichero.close();
@@ -67,15 +78,14 @@ public class Ejercicio18leer {
 
 	}
 
-	private String obtenerString(RandomAccessFile fichero, int tamagno) throws IOException {
+	private String formateaCadena(String cadena, int tamagno) {
 		// TODO Auto-generated method stub
-		char []tmp = new char[tamagno];
-		for (int i = 0; i < tamagno; i++) {
-			tmp[i] = fichero.readChar(); 
-		}
+		StringBuffer tmp = new StringBuffer();
+		tmp.append(cadena);
+		tmp.setLength(tamagno);
+
 		return new String(tmp);
 	}
-
 
 	/**
 	 * Calcular la posicion dentro del fichero en la que debe estar el cursor para
@@ -90,7 +100,5 @@ public class Ejercicio18leer {
 		pos = tamagnoReistro * (numero - 1) + 1;
 		return pos;
 	}
-
-
 
 }

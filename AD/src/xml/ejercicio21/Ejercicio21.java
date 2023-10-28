@@ -1,4 +1,4 @@
-package ejercicio21;
+package xml.ejercicio21;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,8 +17,8 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.*;
 
-import ejercicio18.Departamento;
-import ejercicio19.GestionDepartamentos;
+import aleatorio.ejercicio18.Departamento;
+import aleatorio.ejercicio19.GestionDepartamentos;
 
 /**
  * A partir del fichero binario “departamentos.dat” creado en el ejercicio 18,

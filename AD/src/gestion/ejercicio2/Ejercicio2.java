@@ -1,4 +1,4 @@
-package ejercicio2;
+package gestion.ejercicio2;
 
 import java.io.File;
 import java.util.Scanner;

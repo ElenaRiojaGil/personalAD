@@ -1,4 +1,4 @@
-package ejercicio18;
+package aleatorio.ejercicio18;
 
 public class Departamento {
 	

@@ -1,4 +1,4 @@
-package ejercicio1;
+package gestion.ejercicio1;
 
 import java.io.File;
 

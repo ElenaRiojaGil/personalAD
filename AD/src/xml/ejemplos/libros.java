@@ -1,4 +1,4 @@
-package xml;
+package xml.ejemplos;
 
 import java.io.*;
 

@@ -1,4 +1,4 @@
-package ejercicio4;
+package secuencial.ejercicio4;
 
 import java.io.File;
 import java.io.FileNotFoundException;

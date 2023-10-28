@@ -1,21 +1,11 @@
-package ejercicio20;
+package aleatorio.ejercicio20;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * A partir del fichero binario “departamentos.dat” creado en el ejercicio 18,
- * realiza un programa Java que permita eliminar un departamento. El programa
- * recibirá desde la línea de comandos el número de departamento a eliminar. Si
- * el departamento no existe, visualiza un mensaje indicándolo. Visualiza
- * también el número total de departamentos que existen en el fichero
- * 
- * @author alu
- *
- */
-import ejercicio18.Departamento;
-import ejercicio19.GestionDepartamentos;
+import aleatorio.ejercicio18.Departamento;
+import aleatorio.ejercicio19.GestionDepartamentos;
 
 public class Ejercicio20 {
 
