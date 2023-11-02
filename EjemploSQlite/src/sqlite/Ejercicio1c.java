@@ -29,7 +29,7 @@ public class Ejercicio1c {
 			// Armar el postulado SQL y enviarlo a ejecución usando el Statement.
 			//Libros que han superado la fecha de fin de préstamo
 			ResultSet resultado = stm.executeQuery(
-					"SELECT titulo from LIBRO where Codigo=(SELECT p.CodigoLibro from PRESTAMO p where p.FechaFin< date()) ;");
+					"SELECT titulo from LIBRO where Codigo=(SELECT p.CodigoLibro from PRESTAMO p where p.FechaFin< date());");
 			
 			 //Recibir los resultados en el objeto ResultSet.
 			while (resultado.next()) {
