@@ -23,11 +23,11 @@ public class AccesoSQlite {
 			 Statement stm = conexion.createStatement();
 			 
 			//Armar el postulado SQL y enviarlo a ejecución usando  el Statement.
-			 ResultSet resultado = stm.executeQuery("select * from libro");
+			 ResultSet resultado = stm.executeQuery("select * from SOCIO");
 			
 			 //Recibir los resultados en el objeto ResultSet.
 			 while(resultado.next()) {
-				String titulo= resultado.getString("Titulo");
+				String titulo= resultado.getString("Telefono");
 				 System.out.println(titulo);
 			 }
 			 
