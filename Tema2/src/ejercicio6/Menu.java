@@ -1,37 +1,50 @@
 package ejercicio6;
 
+import java.util.Scanner;
+
 public class Menu {
 	public static void main(String[] args) {
 		int opcion = 0;
 		boolean salir = false;
-		mostrarMenu();
-		
-		switch (opcion) {
-		case 1: {
-			
-
-		}
-		case 2: {
-
-		}
-		case 3: {
-
-		}
-		case 4: {
-
-		}
-		case 5: {
-
-		}
-		case 6: {
-
-		}
-		case 7: {
-
-		}
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + opcion);
-		}
+		Scanner teclado = new Scanner(System.in);
+		Ejercicio6 eje = new Ejercicio6();
+		do {
+			mostrarMenu();
+			System.out.println("¿Que opcion elige? ");
+			opcion = teclado.nextInt();
+			switch (opcion) {
+			case 1: {
+				eje.mostrarLibros();
+				break;
+			}
+			case 2: {
+				eje.mostrarSocios();
+				break;
+			}
+			case 3: {
+				break;
+			}
+			case 4: {
+				break;
+			}
+			case 5: {
+				break;
+			}
+			case 6: {
+				break;
+			}
+			case 7: {
+				break;
+			}
+			case 0: {
+				salir = true;
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + opcion);
+			}
+		} while (!salir);
+		teclado.close();
 
 	}
 
@@ -43,6 +56,7 @@ public class Menu {
 		System.out.println("5. Número de libros prestamos a un socio determinado");
 		System.out.println("6. Libros que han superado la fecha de fin de préstamo");
 		System.out.println("7. Socios que tienen libros que han superado la fecha de fin de préstamo");
+		System.out.println("0. Salir");
 	}
 
 }
