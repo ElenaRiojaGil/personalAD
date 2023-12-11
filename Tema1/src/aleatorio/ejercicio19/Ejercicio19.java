@@ -1,11 +1,11 @@
-package aleatorio.ejercicio19;
+package ejercicio19;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.Scanner;
 
-import aleatorio.ejercicio18.Departamento;
+
 
 /**
  * A partir de fichero binario “departamentos.dat” creado en el ejercicio 18,
@@ -15,7 +15,7 @@ import aleatorio.ejercicio18.Departamento;
  * departamento no existe, visualiza un mensaje indicándolo. Visualiza también
  * los datos antiguos y los nuevos datos del departamento.
  * 
- * @author alu
+ * @author Elena Rioja
  *
  */
 public class Ejercicio19 {

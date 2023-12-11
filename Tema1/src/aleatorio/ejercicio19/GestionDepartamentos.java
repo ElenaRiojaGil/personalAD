@@ -1,11 +1,15 @@
 package aleatorio.ejercicio19;
 
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-import aleatorio.ejercicio18.Departamento;
-
+/**
+ * 
+ * @author Elena Rioja
+ *
+ */
 public class GestionDepartamentos {
 	private static int tamagnoNombre = 25;
 	private static int tamagnoLocalidad = 50;
@@ -166,4 +170,8 @@ public class GestionDepartamentos {
 		funcion(pos);
 		
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/ElenaRiojaGil/personalAD.git
