@@ -17,6 +17,7 @@ public class Main {
 		boolean salir = true;
 
 		Scanner teclado = new Scanner(System.in);
+		GestionApache ga = new GestionApache();
 
 		try {
 
@@ -34,7 +35,7 @@ public class Main {
 				switch (opcion) {
 
 				case 1:
-					GestionApache ga = new GestionApache();
+					
 					ga.listadoDatos(conexion);
 
 					break;

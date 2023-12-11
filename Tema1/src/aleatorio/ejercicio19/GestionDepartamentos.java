@@ -119,7 +119,6 @@ public class GestionDepartamentos {
 		if (fichero != null) {
 
 			try {
-				fichero.getFilePointer();
 				registro = new Departamento();
 
 				// TENGO QUE IR LEYENDO EN ORDEN LO QUE HE ESCRITO ANTES
@@ -140,8 +139,6 @@ public class GestionDepartamentos {
 					campoE[i] = fichero.readChar();
 				}
 				registro.setLocalidad(new String(campoE));
-				
-				
 
 			} catch (Exception e) {
 				// entrar� aqu� cuando haya llegado al final del fichero
@@ -169,12 +166,4 @@ public class GestionDepartamentos {
 		funcion(pos);
 		
 	}
-	public long puntero() throws IOException {
-		return fichero.getFilePointer()+1;
-		
-	}
-	public void iniciarXML() throws IOException {
-		fichero.seek(1);
-	}
-
 }

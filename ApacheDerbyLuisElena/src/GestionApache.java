@@ -1,10 +1,8 @@
 
-import java.beans.Statement;
+import java.sql.Statement;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
-
 import java.sql.ResultSet;
 
 import java.sql.ResultSetMetaData;
@@ -23,11 +21,9 @@ public class GestionApache {
 
 		try {
 
-			PreparedStatement sentencia = conexion.prepareStatement(consulta);
+			Statement sentencia = (Statement) conexion.createStatement();
 
-			sentencia.setString(1, nomTabla);
-
-			ResultSet resultado = sentencia.executeQuery();
+			ResultSet resultado = sentencia.executeQuery(consulta);
 
 			return resultado.next();
 
@@ -49,17 +45,14 @@ public class GestionApache {
 
 		nomTabla = nomTabla.toLowerCase();
 
-		String consulta = "select * from ? ";
+		String consulta = "select * from " + nomTabla;
 
 		if (validarNombreTabla(nomTabla, conexion, consulta)) {
 
 			try {
 
-				PreparedStatement sentencia = conexion.prepareStatement(consulta);
-
-				sentencia.setString(1, nomTabla);
-
-				ResultSet resultado = sentencia.executeQuery();
+				Statement sentencia = (Statement) conexion.createStatement();
+				ResultSet resultado = sentencia.executeQuery(consulta);
 
 				ResultSetMetaData rsmd = resultado.getMetaData();
 
@@ -115,7 +108,105 @@ public class GestionApache {
 
 	}
 
-	public void insertarDatoEnTabla() {
+	public void insertarDatoEnTabla(Connection conexion) {
+		System.out.println("Introduzca el nombre de la tabla: ");
+
+		String nomTabla = teclado.nextLine();
+
+		// nomTabla = nomTabla.toLowerCase();
+
+		String consulta = "select * from " + nomTabla;
+
+		if (validarNombreTabla(nomTabla, conexion, consulta)) {
+			String sql = "";
+			String nombre, apellido, direccion, telefono, fechaNac, fechaFin, fechaInicio,idlibro,idsocio,titulo;
+			try {
+				switch (nomTabla) {
+
+				case "socio":
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					nombre = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					apellido = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					direccion = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					telefono = teclado.nextLine();
+					sql = "INSERT INTO socio VALUES (?,?,?,?)";
+					PreparedStatement pstm = conexion.prepareStatement(sql);
+					pstm.setString(1, nombre);
+					pstm.setString(2, apellido);
+					pstm.setString(3, direccion);
+					pstm.setString(4, telefono);
+					// 3,5,'2021-11-09','2021-11-19'
+					int cantidad = pstm.executeUpdate();
+
+					break;
+
+				case "prestamo":
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					idsocio = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					idlibro = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					fechaInicio = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					fechaFin = teclado.nextLine();
+					sql = "INSERT INTO prestamo VALUES (?,?,?,?)";
+					PreparedStatement pstmp = conexion.prepareStatement(sql);
+					pstmp.setString(1, idsocio);
+					pstmp.setString(2, idlibro);
+					pstmp.setString(3, fechaInicio);
+					pstmp.setString(4, fechaFin);
+					// 3,5,'2021-11-09','2021-11-19'
+					int cantidadp = pstmp.executeUpdate();
+
+					break;
+
+				case "libro":
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					titulo = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					idlibro = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					fechaInicio = teclado.nextLine();
+					System.out.println("Introduzca el nombre de la tabla: ");
+
+					fechaFin = teclado.nextLine();
+					sql = "INSERT INTO prestamo VALUES (?,?,?,?)";
+					PreparedStatement pstml = conexion.prepareStatement(sql);
+					pstml.setString(1, idsocio);
+					pstml.setString(2, idlibro);
+					pstml.setString(3, fechaInicio);
+					pstml.setString(4, fechaFin);
+					// 3,5,'2021-11-09','2021-11-19'
+					int cantidadl = pstml.executeUpdate();
+
+					break;
+
+				default:
+
+					System.out.println("Tipo de dato desconocido.");
+
+					break;
+
+				}
+
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 
 	}
 

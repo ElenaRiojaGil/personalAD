@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Nov 21 10:24:12 CET 2023:
- Iniciando instancia a816c00e-018b-f131-c48f-00001f602320 de Derby, versión The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): 
+Thu Nov 23 12:12:42 CET 2023:
+ Iniciando instancia a816c00e-018b-fbe1-d137-00001f6811d0 de Derby, versión The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): 
 en el directorio de base de datos D:\Documentos\ElenaRioja\AD\WORKSPACE\EjemploApacheDerby\ejbiblio.db con el cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@22d8cfe0
 Cargado desde file:/D:/Documentos/ElenaRioja/BBDD/Apache%20derby/db-derby-10.16.1.1-bin/lib/derby.jar
 java.vendor=Eclipse Adoptium

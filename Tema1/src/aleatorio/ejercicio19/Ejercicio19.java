@@ -19,16 +19,14 @@ import aleatorio.ejercicio18.Departamento;
  *
  */
 public class Ejercicio19 {
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		GestionDepartamentos departamentos=new GestionDepartamentos("departamentos.dat");
-		// defino el fichero donde voy a escribir
-		//RandomAccessFile fichero = null;
+		GestionDepartamentos departamentos = new GestionDepartamentos("src\\ejercicio19\\departamentos.dat");
+		// AD/src/ejercicio19/departamentos.dat
 		try {
-			//fichero = new RandomAccessFile("src\\ejercicio18\\departamentos.dat", "rw");
+			// fichero = new RandomAccessFile("src\\ejercicio18\\departamentos.dat", "rw");
 			departamentos.abrir();
 		} catch (FileNotFoundException e) {
 			System.err.println("No existe el fichero");
@@ -38,46 +36,36 @@ public class Ejercicio19 {
 		int num;
 		String nom, loc;
 		Scanner teclado = new Scanner(System.in);
-		
+
 		System.out.println("Introduzca el número del departamento a modificar: ");
 		num = teclado.nextInt();
 		teclado.nextLine();
-		System.out.println("Introduzca el nombre del departamento a modificar: ");
-		nom = teclado.next();
-		System.out.println("Introduzca el localidad del departamento a modificar: ");
-		loc = teclado.next();
-		Departamento d = new Departamento(num,nom,loc);
-		try {
-			System.out.println("Datos antiguos con el nuemro de departamento "+num+" son: "+departamentos.leer(num));
-			departamentos.escribir(d,num);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-/**
-		try {
-			// colocar el cursor donde voy a empeza a escribir
-			fichero.seek(departamentos.funcion(num));
-
-			d.setNumero(fichero.readInt()); // escribo el numero de departamento
-			fichero.writeChars(ej.formateaCadena(d.getNombre(), tamagnoNombre)); // escribo el nombre del departamento
-			fichero.writeChars(ej.formateaCadena(d.getLocalidad(), tamagnoLocalidad)); // escribo la localidad
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		**/
 		
-
-		System.out.println(d);
-		// leer un departamento
-
 		try {
+			if (departamentos.leer(num).getNumero() != 0) {
+				System.out.println("Introduzca el nombre del departamento a modificar: ");
+				nom = teclado.next();
+				System.out.println("Introduzca el localidad del departamento a modificar: ");
+				loc = teclado.next();
+				Departamento d = new Departamento(num, nom, loc);
+
+				try {
+					System.out.println(
+							"Datos antiguos con el nuemro de departamento " + num + " son: " + departamentos.leer(num));
+					departamentos.escribir(d, num);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				System.out.println(d);
+			} else
+				System.err.println("No existe el numero de departamento");
 			teclado.close();
 			departamentos.cerrar();
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
