@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-package ejercicio9;
 
-public class Gestion {
-	
-
-}
-=======
 package ejercicio9;
 
 import java.sql.*;
@@ -109,8 +102,8 @@ public class Gestion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
+	
 
 }
->>>>>>> branch 'master' of https://github.com/ElenaRiojaGil/personalAD.git
+

@@ -186,7 +186,7 @@ public class GestionApache {
 					fechaFin = teclado.nextLine();
 					sql = "INSERT INTO prestamo VALUES (?,?,?,?)";
 					PreparedStatement pstml = conexion.prepareStatement(sql);
-					pstml.setString(1, idsocio);
+					pstml.setString(1, titulo);
 					pstml.setString(2, idlibro);
 					pstml.setString(3, fechaInicio);
 					pstml.setString(4, fechaFin);
