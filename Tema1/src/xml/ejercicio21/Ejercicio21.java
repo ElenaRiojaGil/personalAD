@@ -50,7 +50,7 @@ public class Ejercicio21 {
 			while (!departamentos.finFichero()) {
 
 				d = departamentos.leer();
-				// System.out.println(d);
+				
 				if (d != null) {
 
 					if (d.getNumero() > 0) {

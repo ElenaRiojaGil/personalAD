@@ -1,9 +1,11 @@
-package ejercicio19;
+package aleatorio.ejercicio19;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.Scanner;
+
+import aleatorio.ejercicio18.Departamento;
 
 
 

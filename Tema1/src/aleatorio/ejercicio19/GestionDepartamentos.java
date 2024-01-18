@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+import aleatorio.ejercicio18.Departamento;
+
 /**
  * 
  * @author Elena Rioja
@@ -165,13 +167,15 @@ public class GestionDepartamentos {
 	public void iniciar() throws IOException {
 		fichero.seek(0);
 	}
+	public void iniciarXML() throws IOException {
+		fichero.seek(1);
+	}
 
 	public void eliminar(Departamento d, int pos) {
 		funcion(pos);
 		
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/ElenaRiojaGil/personalAD.git
+
+
