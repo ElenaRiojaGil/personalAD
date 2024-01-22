@@ -1,9 +1,10 @@
 package aleatorio.ejercicio19;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+
+import aleatorio.ejercicio18.Departamento;
 
 /**
  * 
@@ -132,7 +133,7 @@ public class GestionDepartamentos {
 				char campoN[] = new char[tamagnoNombre];
 				for (int i = 0; i < tamagnoNombre; i++) {
 					campoN[i] = fichero.readChar();
-					
+
 				}
 				// leo el NOMBRE
 				registro.setNombre(new String(campoN));
@@ -167,11 +168,9 @@ public class GestionDepartamentos {
 	}
 
 	public void eliminar(Departamento d, int pos) {
+
 		funcion(pos);
-		
+
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/ElenaRiojaGil/personalAD.git

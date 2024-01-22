@@ -1,11 +1,11 @@
-package ejercicio19;
+package aleatorio.ejercicio19;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.Scanner;
 
-
+import aleatorio.ejercicio18.Departamento;
 
 /**
  * A partir de fichero binario “departamentos.dat” creado en el ejercicio 18,
@@ -40,7 +40,7 @@ public class Ejercicio19 {
 		System.out.println("Introduzca el número del departamento a modificar: ");
 		num = teclado.nextInt();
 		teclado.nextLine();
-		
+
 		try {
 			if (departamentos.leer(num).getNumero() != 0) {
 				System.out.println("Introduzca el nombre del departamento a modificar: ");
