@@ -23,26 +23,29 @@ public class Genera {
 			// System.out.println(linea);
 
 			int caracter = lector.read();
-			System.out.println(linea);
+			//System.out.println(linea);
 			while (caracter > 0) {
 				linea = "";
-				while (caracter != '\n') {
+				
+				while (caracter != '\n' && caracter != -1) {
 					linea = linea + (char) caracter;
 					caracter = lector.read();
+					
 				}
-				System.out.println(linea);
+				
+				//System.out.println(linea);
 				String datos[] = linea.split(",");
 				int id = Integer.parseInt(datos[0]);
 				String nombre = datos[1];
-				System.out.println(linea+"  .");
+				//System.out.println(linea+"  .");
 				double salario = Double.parseDouble(datos[2]);
 				
 				int sindicato = Integer.parseInt(datos[3].trim());
-				System.out.println(linea+"  .");
+				//System.out.println(linea+"  .");
 				a1 = new Trabajadores(id, nombre, salario, sindicato);
 				
 				departamentos.escribir(a1, id);
-				//System.out.println(linea+"  .");
+				System.out.println(linea+"  .");
 				caracter = lector.read();
 			}
 

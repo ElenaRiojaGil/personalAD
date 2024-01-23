@@ -1,0 +1,32 @@
+Fichero aleatorio = extensión que queramos (.dat)
+
+Ejercicio 1
+
+Getters y setters => persona.java
+Funciones => GestionAgenda.java
+
+try leer fichero devuelve ArrayList, los escribe en el fichero
+
+try{
+	t= new trabajador (Integer.parseInt (campos[0]), (campos [1]), Double.parseDouble	(campos[2]), Intergar.parseInt(campo));
+}catch (NumberFormatException e);
+
+Ejercicio 2
+
+Utilidades.java, GestionaNegociaciones "\t" => separa por columnas
+
+int idNegociacion = Utilidades.pedirEntero("Introduce un numero")
+String fecha ...
+
+private boolean validaFecha (String fecha){
+	DateTimeFormater dtf = DateTimeFormater.ofPattern ("yyyy-MM-dd");
+	try{
+		LocalData.parse(fecha, dtf);
+	}catch (DateTimeParseException ex){
+		return false;
+	return true;
+}
+
+Query
+
+"SELECT T.nombre AS nom NegociacionesColectivas N, Trabajadores T, Sindicatos s" + "WHERE s.id = N.sindicato_id AND T.sindicato_id = s.id AND N.fecha_fin > SYSDATE();
