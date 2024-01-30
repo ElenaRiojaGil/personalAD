@@ -133,18 +133,15 @@ public class Consultas {
 	}
 
 	public void nombresEm(ODB baseDatos) {
-		
-	
-}
+
+	}
+
 	public void numEm(ODB baseDatos) {
-		
-		
-}
 
-public void numEmxDep(ODB baseDatos) {
-		
-		
-}
+	}
 
+	public void numEmxDep(ODB baseDatos) {
+
+	}
 
 }
