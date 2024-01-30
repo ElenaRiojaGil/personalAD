@@ -51,7 +51,7 @@ public class ejercicio2 {
 					break;
 					
 				case 3:
-					consulta.insertarAutores(baseDatos);
+					consulta.modificarLibro(baseDatos);
 					break;
 
 				case 0:
@@ -69,6 +69,8 @@ public class ejercicio2 {
 			}
 
 		} while (false);
+		
+	
 
 	}
 

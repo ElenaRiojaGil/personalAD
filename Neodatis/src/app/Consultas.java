@@ -1,22 +1,15 @@
 package app;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
-
 import org.neodatis.odb.ODB;
-import org.neodatis.odb.ODBFactory;
-import org.neodatis.odb.OID;
 import org.neodatis.odb.Objects;
-import org.neodatis.odb.core.oid.OIDFactory;
 import org.neodatis.odb.core.query.IQuery;
-import org.neodatis.odb.core.query.criteria.And;
 import org.neodatis.odb.core.query.criteria.Where;
 import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
 
 import datos.Autor;
-import datos.Jugador;
 import datos.Libro;
 
 public class Consultas {
@@ -38,17 +31,16 @@ public class Consultas {
 		System.out.println("Introduzca el numero de paginas del libro: ");
 		paginas = teclado.nextInt();
 		l1.setPaginas(paginas);
-		
-		
-		baseDatos.store(l1);
 
-		baseDatos.close();
+		baseDatos.store(l1);
+		baseDatos.commit();
+
 	}
-	
+
 	public void insertarAutores(ODB baseDatos) {
-		String nombre, apellido,nacionalidad;
-		 int edad;
-		 
+		String nombre, apellido, nacionalidad;
+		int edad;
+
 		Autor a1 = new Autor();
 		System.out.println("Introduzca el nombre del autor: ");
 		nombre = teclado.nextLine();
@@ -62,39 +54,97 @@ public class Consultas {
 		System.out.println("Introduzca la edad del autor: ");
 		edad = teclado.nextInt();
 		a1.setEdad(edad);
-		
-		
+
 		baseDatos.store(a1);
+		baseDatos.commit();
 
-		baseDatos.close();
 	}
-	
-	public void modificarLibro(ODB baseDatos) {
-		String titulo, autor;
-		int numAutores;
-		Libro l1 = new Libro();
-		System.out.println("Introduzca el titulo del libro: ");
-		titulo = teclado.nextLine();
-		IQuery query = new CriteriaQuery(Libro.class, Where.equal("titulo", titulo));
-		List<Autor> autores = null;
-		
-		System.out.println("¿Cuantos autores tiene el libro?: ");
-		numAutores = teclado.nextInt();
-		for (int i = 0; i < numAutores; i++) {
-			System.out.println("Introduzca el nombre del autor del libro (solo uno): ");
-			autor = teclado.nextLine();
-			IQuery query2 = new CriteriaQuery(Autor.class, Where.equal("nombre", autor));
-			Objects<Autor> losautores = baseDatos.getObjects(query2);
-			
-			
+
+	public static void mostrarL(ODB baseDatos) {
+		Objects<Libro> losJugadores = baseDatos.getObjects(Libro.class);
+		for (Iterator iterator = losJugadores.iterator(); iterator.hasNext();) {
+			Libro jugador = (Libro) iterator.next();
+			System.out.println(jugador.getTitulo());
+
 		}
-		l1.setAutores(autores);
-		
-		baseDatos.close();
-		
-		
-		baseDatos.store(l1);
 
-		baseDatos.close();
 	}
+
+	public static void mostrarA(ODB baseDatos) {
+		Objects<Autor> losJugadores = baseDatos.getObjects(Autor.class);
+		for (Iterator iterator = losJugadores.iterator(); iterator.hasNext();) {
+			Autor jugador = (Autor) iterator.next();
+			System.out.println(jugador.getNombre() + " " + jugador.getApellido());
+
+		}
+
+	}
+
+	public void modificarLibro(ODB baseDatos) {
+		mostrarL(baseDatos);
+
+		// Solicitar al usuario el título del libro a modificar
+		System.out.println("Introduzca el titulo del libro: ");
+		String titulo = teclado.nextLine();
+
+		// Buscar el libro en la base de datos
+		IQuery query = new CriteriaQuery(Libro.class, Where.equal("titulo", titulo));
+		Objects<Libro> libros = baseDatos.getObjects(query);
+
+		if (libros.size() > 0) {
+			// Obtener el libro
+			Libro libro = libros.getFirst();
+
+			// Mostrar todos los autores
+			mostrarA(baseDatos);
+
+			// Solicitar al usuario el nombre del autor a añadir al libro
+			System.out.println("Introduzca el nombre del autor del libro: ");
+			String nombre = teclado.nextLine();
+
+			// Buscar el autor en la base de datos
+			IQuery query2 = new CriteriaQuery(Autor.class, Where.equal("nombre", nombre));
+			Objects<Autor> autores = baseDatos.getObjects(query2);
+
+			if (autores.size() > 0) {
+				// Obtener el autor
+				Autor autor = autores.getFirst();
+
+				// Verificar si el conjunto de autores en el libro es null y, si es así,
+				// inicializarlo
+				if (libro.getAutores() == null) {
+					libro.setAutores(new ArrayList<>());
+				}
+
+				// Asignar el autor al libro
+				libro.getAutores().add(autor);
+
+				// Almacenar el libro modificado en la base de datos y realizar un commit
+				baseDatos.store(libro);
+				baseDatos.commit();
+
+				System.out.println("Autor añadido al libro correctamente.");
+			} else {
+				System.out.println("No se encontró el autor en la base de datos.");
+			}
+		} else {
+			System.out.println("No se encontró el libro en la base de datos.");
+		}
+	}
+
+	public void nombresEm(ODB baseDatos) {
+		
+	
+}
+	public void numEm(ODB baseDatos) {
+		
+		
+}
+
+public void numEmxDep(ODB baseDatos) {
+		
+		
+}
+
+
 }
